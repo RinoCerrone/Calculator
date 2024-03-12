@@ -28,24 +28,28 @@ function addValue(inputValue){
 
 
 function addOperator(inputOperator){
+    
+    if(inputOperator === '+/-' && displayValue !== ''){
+        displayValue = parseFloat(displayValue) * -1;
+        document.getElementById('input').innerHTML = displayValue;
+        return; 
+    } else if(inputOperator === '%' && displayValue !== ''){
+        displayValue = parseFloat(displayValue) / 100;
+        document.getElementById('input').innerHTML = displayValue;
+        return; 
+    }
+
+    
     if(firstValue !== undefined && displayValue !== '') {
         operate();  
     }
 
-    if(inputOperator === '+/-' && displayValue !== ''){
-        displayValue = parseFloat(displayValue) * -1;
-    } else if(inputOperator === '%' && displayValue !== ''){
-        displayValue = parseFloat(displayValue) / 100;
-    } else {
-        operator = inputOperator;
-    }
-
+    operator = inputOperator;
     if(displayValue !== '') {  
         firstValue = parseFloat(displayValue);
         displayValue = '';
     }
-
-    document.getElementById('input').innerHTML = displayValue;
+    
 }
 
 
