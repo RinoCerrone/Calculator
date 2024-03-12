@@ -3,9 +3,9 @@ let firstValue
 let secondValue
 let operator
 
-let displayValue = ''
+let displayValue = '';
 
-document.getElementById('input').innerHTML = displayValue
+document.getElementById('input').innerHTML = displayValue;
 
 
 
@@ -15,37 +15,39 @@ function addValue(inputValue){
 
     if(inputValue === '.'){
         if(displayValue.indexOf('.') == -1){
-            displayValue += inputValue
-            document.getElementById('input').innerHTML = displayValue
+            displayValue += inputValue;
+            document.getElementById('input').innerHTML = displayValue;
         }
     }
 
     else{
         displayValue += inputValue
-        document.getElementById('input').innerHTML = displayValue
+        document.getElementById('input').innerHTML = displayValue;
     }
 }
 
 
 function addOperator(inputOperator){
-    operator = inputOperator
-    firstValue = parseFloat(displayValue)
-    displayValue = ''
-
-    
-
-    if(operator === '+/-'){
-        displayValue = firstValue * -1
-        document.getElementById('input').innerHTML = displayValue
+    if(firstValue !== undefined && displayValue !== '') {
+        operate();  
     }
 
-    
-
-    else if(operator === '%'){
-        displayValue = firstValue / 100
-        document.getElementById('input').innerHTML = displayValue
+    if(inputOperator === '+/-' && displayValue !== ''){
+        displayValue = parseFloat(displayValue) * -1;
+    } else if(inputOperator === '%' && displayValue !== ''){
+        displayValue = parseFloat(displayValue) / 100;
+    } else {
+        operator = inputOperator;
     }
+
+    if(displayValue !== '') {  
+        firstValue = parseFloat(displayValue);
+        displayValue = '';
+    }
+
+    document.getElementById('input').innerHTML = displayValue;
 }
+
 
 
 function allClear(){
@@ -53,37 +55,36 @@ function allClear(){
     firstValue = ''
     secondValue = ''
     operator = ''
-    document.getElementById('input').innerHTML = displayValue
+    document.getElementById('input').innerHTML = displayValue;
 }
 
 
 
 function operate(){
-    secondValue = parseFloat(displayValue)
-
     
+        secondValue = parseFloat(displayValue);
 
-    if(operator === '+'){
-        displayValue = firstValue + secondValue
-    }
-
+        switch(operator) {
+            case '+':
+                displayValue = firstValue + secondValue;
+                break;
+            case '-':
+                displayValue = firstValue - secondValue;
+                break;
+            case '*':
+                displayValue = firstValue * secondValue;
+                break;
+            case '/':
+                if( secondValue == 0 ){
+                    return "ERROR";
+                }
+                displayValue = firstValue / secondValue;
+                break;
+        
+        } 
+        document.getElementById('input').innerHTML = displayValue;
+        firstValue = parseFloat(displayValue);
+        secondValue = undefined;
+        operator = '';
     
-
-    else if(operator === '-'){
-        displayValue = firstValue - secondValue
-    }
-
-    
-
-    else if(operator === '*'){
-        displayValue = firstValue * secondValue
-    }
-
-    
-
-    else if(operator === '/'){
-        displayValue = firstValue / secondValue
-    }
-
-    document.getElementById('input').innerHTML = displayValue
 }
