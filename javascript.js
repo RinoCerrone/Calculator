@@ -1,33 +1,89 @@
-function add(a,b){
-    return a+b;
-}
-function substract(a,b){
-    return a-b;
-}
-function multiply(a,b){
-    return a*b;
-}
-function divide(a,b){
-    if(b!==0)return a/b;
-}
-let firstOp;
-let secondOp;
-let operator;
 
-function operate(operator,a,b){
-    switch(operator){
-        case "+":
-            return add(a,b);
-            break;
-        case "-":
-            return substract(a,b);
-            break;
-        case "*":
-            return multiply(a,b);
-            break;
-        case "/":
-            return divide(a,b);
-            break;
-   
+let firstValue
+let secondValue
+let operator
+
+let displayValue = ''
+
+document.getElementById('input').innerHTML = displayValue
+
+
+
+function addValue(inputValue){
+
+    
+
+    if(inputValue === '.'){
+        if(displayValue.indexOf('.') == -1){
+            displayValue += inputValue
+            document.getElementById('input').innerHTML = displayValue
+        }
     }
+
+    else{
+        displayValue += inputValue
+        document.getElementById('input').innerHTML = displayValue
+    }
+}
+
+
+function addOperator(inputOperator){
+    operator = inputOperator
+    firstValue = parseFloat(displayValue)
+    displayValue = ''
+
+    
+
+    if(operator === '+/-'){
+        displayValue = firstValue * -1
+        document.getElementById('input').innerHTML = displayValue
+    }
+
+    
+
+    else if(operator === '%'){
+        displayValue = firstValue / 100
+        document.getElementById('input').innerHTML = displayValue
+    }
+}
+
+
+function allClear(){
+    displayValue = ''
+    firstValue = ''
+    secondValue = ''
+    operator = ''
+    document.getElementById('input').innerHTML = displayValue
+}
+
+
+
+function evaluation(){
+    secondValue = parseFloat(displayValue)
+
+    
+
+    if(operator === '+'){
+        displayValue = firstValue + secondValue
+    }
+
+    
+
+    else if(operator === '-'){
+        displayValue = firstValue - secondValue
+    }
+
+    
+
+    else if(operator === '*'){
+        displayValue = firstValue * secondValue
+    }
+
+    
+
+    else if(operator === '/'){
+        displayValue = firstValue / secondValue
+    }
+
+    document.getElementById('input').innerHTML = displayValue
 }
