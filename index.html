@@ -5,8 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="javascript.js" defer></script>
 </head>
 <body>
+
+    <h1 id="heading">Calculator</h1>
+
+    <div class="container">
+
+        
+
+        <div class="inputField">
+            <h1 id="input"></h1>
+        </div>
+
+        
+
+        <div class="buttons">
+
+            
+            <button id="ac" onclick="allClear()">AC</button>
+            <button id="opposite" onclick="addOperator('+/-')">+/-</button>
+            <button id="percent" onclick="addOperator('%')">%</button>
+            <button id="division" onclick="addOperator('/')">/</button>
+
+          
+
+            <button id="seven" onclick="addValue('7')">7</button>
+            <button id="eight" onclick="addValue('8')">8</button>
+            <button id="nine" onclick="addValue('9')">9</button>
+            <button id="multiply" onclick="addOperator('*')">*</button>
+
+           
+
+            <button id="four" onclick="addValue('4')">4</button>
+            <button id="five" onclick="addValue('5')">5</button>
+            <button id="six" onclick="addValue('6')">6</button>
+            <button id="substract" onclick="addOperator('-')">-</button>
+
+           
+            <button id="one" onclick="addValue('1')">1</button>
+            <button id="two" onclick="addValue('2')">2</button>
+            <button id="three" onclick="addValue('3')">3</button>
+            <button id="add" onclick="addOperator('+')">+</button>
+
+           
+
+            <button id="zero" onclick="addValue('0')">0</button>
+            <button id="decimal" onclick="addValue('.')">.</button>
+            <button id="equal" onclick="evaluation()">=</button>
+
+        </div>
+
+    </div>
+
+
     
 </body>
 </html>
