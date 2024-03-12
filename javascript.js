@@ -58,7 +58,7 @@ function allClear(){
 
 
 
-function evaluation(){
+function operate(){
     secondValue = parseFloat(displayValue)
 
     
