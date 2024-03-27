@@ -86,6 +86,15 @@ function operate(){
                 break;
         
         } 
+
+         
+        displayValue = Number(Math.round(displayValue + 'e6') + 'e-6');
+
+        
+        if (Math.floor(displayValue) === displayValue) {
+            displayValue = Math.floor(displayValue);
+        }
+
         document.getElementById('input').innerHTML = displayValue;
         firstValue = parseFloat(displayValue);
         secondValue = undefined;
